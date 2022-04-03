@@ -2,6 +2,17 @@
 
 namespace toyrobot {
 
+const string Directions::kDirections[] = {
+    "NORTH",
+    "EAST",
+    "SOUTH",
+    "WEST"
+};
+
+string Directions::Converter(Direction direction) {
+    return kDirections[direction];
+}
+
 void Directions::TurnLeft(Direction& direction) {
     switch (direction) {
         case kFacingNorth: {

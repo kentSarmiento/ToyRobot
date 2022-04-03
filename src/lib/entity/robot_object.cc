@@ -1,4 +1,9 @@
+#include <sstream>
+
 #include "robot_object.h"
+#include "directions.h"
+
+using namespace std;
 
 namespace toyrobot {
 
@@ -24,6 +29,12 @@ void RobotObject::Move() {
     }
 }
 
-string RobotObject::Report() { return ""; }
+string RobotObject::Report() {
+    stringstream outstream;
+    outstream << position_.x << ",";
+    outstream << position_.y << ",";
+    outstream << Directions::Converter(facing_);
+    return outstream.str();
+}
 
 } // namespace toyrobot
