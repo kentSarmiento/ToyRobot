@@ -2,7 +2,27 @@
 
 namespace toyrobot {
 
-void RobotObject::Move() {}
+void RobotObject::Move() {
+    switch (facing_) {
+        case kFacingNorth: {
+            position_.y++;
+            break;
+        }
+        case kFacingEast: {
+            position_.x++;
+            break;
+        }
+        case kFacingSouth: {
+            position_.y--;
+            break;
+        }
+        case kFacingWest:
+        default: {
+            position_.x--;
+            break;
+        }
+    }
+}
 
 void RobotObject::TurnLeft() {}
 
