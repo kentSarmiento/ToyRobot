@@ -2,7 +2,6 @@
 #define ENTITY_TEST_ROBOT_OBJECT_H_
 
 #include "robot_object.h"
-#include "test_base_object.h"
 
 using namespace toyrobot;
 
