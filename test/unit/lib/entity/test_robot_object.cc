@@ -1,6 +1,10 @@
+#include <sstream>
+
 #include "catch.hpp"
 #include "test_robot_object.h"
 #include "robot_object.h"
+
+using namespace std;
 
 TEST_CASE("RobotObject: Default constructor", "[RobotObject]") {
     TestRobotObject test_robot;
@@ -132,5 +136,47 @@ TEST_CASE("RobotObject: Turn Right Operation", "[RobotObject]") {
         test_robot.TurnRight();
 
         REQUIRE(test_robot.get_facing() == kFacingNorth);
+    }
+}
+
+TEST_CASE("RobotObject: Report Operation", "[RobotObject]") {
+    auto x = GENERATE(0, 1, 2, 3, 4);
+    auto y = GENERATE(0, 1, 2, 3, 4);
+
+    SECTION("Report status at position (X,Y) and facing North") {
+        TestRobotObject test_robot(1, Coordinates(x,y), kFacingNorth);
+        stringstream expected_report;
+        expected_report << x << "," << y << "," << "NORTH";
+
+        string report = test_robot.Report();
+
+        REQUIRE(report == expected_report.str());
+    }
+    SECTION("Report status at position (X,Y) and facing East") {
+        TestRobotObject test_robot(1, Coordinates(x,y), kFacingEast);
+        stringstream expected_report;
+        expected_report << x << "," << y << "," << "EAST";
+
+        string report = test_robot.Report();
+
+        REQUIRE(report == expected_report.str());
+    }
+    SECTION("Report status at position (X,Y) and facing South") {
+        TestRobotObject test_robot(1, Coordinates(x,y), kFacingSouth);
+        stringstream expected_report;
+        expected_report << x << "," << y << "," << "SOUTH";
+
+        string report = test_robot.Report();
+
+        REQUIRE(report == expected_report.str());
+    }
+    SECTION("Report status at position (X,Y) and facing West") {
+        TestRobotObject test_robot(1, Coordinates(x,y), kFacingWest);
+        stringstream expected_report;
+        expected_report << x << "," << y << "," << "WEST";
+
+        string report = test_robot.Report();
+
+        REQUIRE(report == expected_report.str());
     }
 }
