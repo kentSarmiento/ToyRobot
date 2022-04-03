@@ -15,10 +15,10 @@ enum Direction {
 
 class Directions {
 public:
-    static Direction converter(string direction);
-    static string converter(Direction direction);
-    static Direction left(Direction direction);
-    static Direction right(Direction direction);
+    static Direction Converter(string direction);
+    static string Converter(Direction direction);
+    static void TurnLeft(Direction& direction);
+    static void TurnRight(Direction& direction);
 
 private:
     static const string kDirections[];

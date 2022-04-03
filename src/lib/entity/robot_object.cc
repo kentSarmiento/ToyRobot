@@ -24,10 +24,6 @@ void RobotObject::Move() {
     }
 }
 
-void RobotObject::TurnLeft() {}
-
-void RobotObject::TurnRight() {}
-
 string RobotObject::Report() { return ""; }
 
 } // namespace toyrobot

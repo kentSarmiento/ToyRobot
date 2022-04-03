@@ -32,6 +32,14 @@ protected:
     Direction facing_;
 };
 
+inline void RobotObject::TurnLeft() {
+    Directions::TurnLeft(facing_);
+}
+
+inline void RobotObject::TurnRight() {
+    Directions::TurnRight(facing_);
+}
+
 } // namespace toyrobot
 
 #endif // ENTITY_ROBOT_OBJECT_H_

@@ -13,12 +13,16 @@ INCS = -I$(TESTDIR) \
        -I$(SRCDIR)/lib/entity \
        -I$(SRCDIR)/lib/value
 
+VALUE = directions.o
 ENTITY = test_base_object.o robot_object.o test_robot_object.o test_table.o
 TARGET = test_main.o
 OUT = main
 
-$(OUT): $(TARGET) $(ENTITY)
-	$(CXX) $(CXXFLAGS) -o $(OUT) $(TARGET) $(ENTITY)
+$(OUT): $(TARGET) $(ENTITY) $(VALUE)
+	$(CXX) $(CXXFLAGS) -o $(OUT) $(TARGET) $(ENTITY) $(VALUE)
+
+directions.o: $(SRCDIR)/lib/value/directions.cc $(SRCDIR)/lib/value/directions.h
+	$(CXX) $(CXXFLAGS) $(INCS) -c $(SRCDIR)/lib/value/directions.cc
 
 test_base_object.o: $(UNITTESTDIR)/lib/entity/test_base_object.cc $(UNITTESTDIR)/lib/entity/test_base_object.h
 	$(CXX) $(CXXFLAGS) $(INCS) -c $(UNITTESTDIR)/lib/entity/test_base_object.cc
