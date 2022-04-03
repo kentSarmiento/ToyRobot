@@ -9,7 +9,7 @@ using namespace toyrobot;
 class TestRobotObject : public RobotObject {
 
 public:
-    TestRobotObject(): RobotObject() {}
+    TestRobotObject() : RobotObject() {}
 
     TestRobotObject(int id, Coordinates position, Direction facing)
         : RobotObject(id, position, facing) {}

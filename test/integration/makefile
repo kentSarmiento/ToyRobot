@@ -27,3 +27,6 @@ all: $(OUT)
 
 clean:
 	rm -f *.o $(OUT)
+
+test:
+	./$(OUT)
