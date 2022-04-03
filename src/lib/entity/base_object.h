@@ -9,9 +9,7 @@ namespace toyrobot {
 class BaseObject {
 
 public:
-    BaseObject()
-        : position_(0, 0),
-          type_(kObjectType) {
+    BaseObject() : position_(0, 0), type_(kObjectType) {
         id_ = 0;
     }
 

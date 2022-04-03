@@ -13,7 +13,7 @@ INCS = -I$(TESTDIR) \
        -I$(SRCDIR)/lib/entity \
        -I$(SRCDIR)/lib/value
 
-ENTITY = test_base_object.o
+ENTITY = test_base_object.o test_robot_object.o
 TARGET = test_main.o
 OUT = main
 
@@ -23,13 +23,19 @@ $(OUT): $(TARGET) $(ENTITY)
 test_base_object.o: $(UNITTESTDIR)/lib/entity/test_base_object.cc $(UNITTESTDIR)/lib/entity/test_base_object.h
 	$(CXX) $(CXXFLAGS) $(INCS) -c $(UNITTESTDIR)/lib/entity/test_base_object.cc
 
+test_robot_object.o: $(UNITTESTDIR)/lib/entity/test_robot_object.cc $(UNITTESTDIR)/lib/entity/test_robot_object.h
+	$(CXX) $(CXXFLAGS) $(INCS) -c $(UNITTESTDIR)/lib/entity/test_robot_object.cc
+
 test_main.o: $(UNITTESTDIR)/test_main.cc
 	$(CXX) $(CXXFLAGS) $(INCS) -c $(UNITTESTDIR)/test_main.cc
 
 all: $(OUT)
 
 clean:
-	rm -f *.o $(TARGET) *.gc* *.info
+	rm -f $(OUT) $(ENTITY)
+
+all_clean:
+	rm -f $(OUT) *.o *.gc* *.info
 	rm -rf $(HTML_OUTPUT)
 
 coverage:
