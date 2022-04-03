@@ -1,0 +1,8 @@
+# Catch Header File for tests
+catch.hpp
+
+# Application output
+main
+
+# Object files
+*.o
