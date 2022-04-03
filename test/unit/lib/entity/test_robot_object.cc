@@ -70,3 +70,67 @@ TEST_CASE("RobotObject: Move Operation", "[RobotObject]") {
         REQUIRE(test_robot.get_y_position() == y);
     }
 }
+
+TEST_CASE("RobotObject: Turn Left Operation", "[RobotObject]") {
+
+    SECTION("Direction facing after turning left when facing North") {
+        TestRobotObject test_robot(1, Coordinates(0,0), kFacingNorth);
+
+        test_robot.TurnLeft();
+
+        REQUIRE(test_robot.get_facing() == kFacingWest);
+    }
+    SECTION("Direction facing after turning left when facing East") {
+        TestRobotObject test_robot(1, Coordinates(0,0), kFacingEast);
+
+        test_robot.TurnLeft();
+
+        REQUIRE(test_robot.get_facing() == kFacingNorth);
+    }
+    SECTION("Direction facing after turning left when facing South") {
+        TestRobotObject test_robot(1, Coordinates(0,0), kFacingSouth);
+
+        test_robot.TurnLeft();
+
+        REQUIRE(test_robot.get_facing() == kFacingEast);
+    }
+    SECTION("Direction facing after turning left when facing West") {
+        TestRobotObject test_robot(1, Coordinates(0,0), kFacingWest);
+
+        test_robot.TurnLeft();
+
+        REQUIRE(test_robot.get_facing() == kFacingSouth);
+    }
+}
+
+TEST_CASE("RobotObject: Turn Right Operation", "[RobotObject]") {
+
+    SECTION("Direction facing after turning right when facing North") {
+        TestRobotObject test_robot(1, Coordinates(0,0), kFacingNorth);
+
+        test_robot.TurnRight();
+
+        REQUIRE(test_robot.get_facing() == kFacingEast);
+    }
+    SECTION("Direction facing after turning left when facing East") {
+        TestRobotObject test_robot(1, Coordinates(0,0), kFacingEast);
+
+        test_robot.TurnRight();
+
+        REQUIRE(test_robot.get_facing() == kFacingSouth);
+    }
+    SECTION("Direction facing after turning left when facing South") {
+        TestRobotObject test_robot(1, Coordinates(0,0), kFacingSouth);
+
+        test_robot.TurnRight();
+
+        REQUIRE(test_robot.get_facing() == kFacingWest);
+    }
+    SECTION("Direction facing after turning left when facing West") {
+        TestRobotObject test_robot(1, Coordinates(0,0), kFacingWest);
+
+        test_robot.TurnRight();
+
+        REQUIRE(test_robot.get_facing() == kFacingNorth);
+    }
+}
