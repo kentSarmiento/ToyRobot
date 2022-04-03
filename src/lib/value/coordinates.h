@@ -9,6 +9,10 @@ struct Coordinates {
 
     Coordinates() : x(0), y(0) {}
     Coordinates(int x, int y) : x(x), y(y) {}
+
+    bool operator==(const Coordinates& pos) const {
+        return x == pos.x && y == pos.y;
+    }
 };
 
 } // namespace toyrobot

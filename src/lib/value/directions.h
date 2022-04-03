@@ -11,6 +11,8 @@ enum Direction {
     kFacingEast,
     kFacingSouth,
     kFacingWest,
+
+    kMaxValue,
 };
 
 class Directions {
@@ -21,7 +23,10 @@ public:
     static void TurnRight(Direction& direction);
 
 private:
-    static const string kDirections[];
+    static const string kNorth;
+    static const string kEast;
+    static const string kSouth;
+    static const string kWest;
 };
 
 } // namespace toyrobot
