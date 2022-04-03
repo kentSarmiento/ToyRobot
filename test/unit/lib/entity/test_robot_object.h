@@ -10,8 +10,8 @@ class TestRobotObject : public RobotObject {
 public:
     TestRobotObject() : RobotObject() {}
 
-    TestRobotObject(int id, Coordinates position, Direction facing)
-        : RobotObject(id, position, facing) {}
+    TestRobotObject(Coordinates position, Direction facing)
+        : RobotObject(position, facing) {}
 
     TestRobotObject(const TestRobotObject &r)
         : RobotObject(r) {}

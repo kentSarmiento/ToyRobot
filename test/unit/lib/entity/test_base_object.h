@@ -17,9 +17,6 @@ public:
     TestBaseObject(Coordinates position, ObjectType type)
         : BaseObject(position, type) {}
 
-    TestBaseObject(int id, Coordinates position, ObjectType type)
-        : BaseObject(id, position, type) {}
-
     TestBaseObject(const TestBaseObject &o)
         : BaseObject(o) {}
 

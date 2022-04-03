@@ -14,8 +14,8 @@ public:
         facing_ = kFacingNorth;
     }
 
-    RobotObject(int id, Coordinates position, Direction facing)
-        : BaseObject(id, position, kRobotType) {
+    RobotObject(Coordinates position, Direction facing)
+        : BaseObject(position, kRobotType) {
         facing_ = facing;
     }
 
@@ -23,10 +23,13 @@ public:
         facing_ = r.facing_;
     }
 
-    void Move();
-    void TurnLeft();
-    void TurnRight();
-    string Report();
+    Coordinates GetMovePosition() override;
+    void Move() override;
+
+    void TurnLeft() override;
+    void TurnRight() override;
+
+    string Report() override;
 
 protected:
     Direction facing_;

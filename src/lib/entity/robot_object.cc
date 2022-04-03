@@ -7,26 +7,35 @@ using namespace std;
 
 namespace toyrobot {
 
-void RobotObject::Move() {
+Coordinates RobotObject::GetMovePosition() {
+    int x = position_.x;
+    int y = position_.y;
+
     switch (facing_) {
         case kFacingNorth: {
-            position_.y++;
+            y++;
             break;
         }
         case kFacingEast: {
-            position_.x++;
+            x++;
             break;
         }
         case kFacingSouth: {
-            position_.y--;
+            y--;
             break;
         }
         case kFacingWest:
         default: {
-            position_.x--;
+            x--;
             break;
         }
     }
+
+    return Coordinates(x, y);
+}
+
+void RobotObject::Move() {
+    position_ = GetMovePosition();
 }
 
 string RobotObject::Report() {

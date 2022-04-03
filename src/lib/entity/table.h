@@ -17,12 +17,9 @@ public:
         table_size_ = kDefinedTableSize;
     }
 
-    ~Table() {
-        for (auto it = objects_.begin(); it != objects_.end(); it++) {
-            delete it->second;
-        }
-        objects_.clear();
-    }
+    ~Table();
+
+    bool IsCoordinatesPlaceable(Coordinates position);
 
     int PlaceObject(BaseObject *object);
     int PlaceObject(int id, BaseObject *object);
@@ -38,6 +35,13 @@ protected:
 private:
     static const int kDefinedTableSize = 5;
     int table_size_;
+
+    BaseObject *GetObject(int id);
+
+    bool IsCoordinatesValid(Coordinates position);
+    bool IsCoordinatesFree(Coordinates position);
+
+    bool CanObjectMove(BaseObject* object);
 };
 
 } // namespace toyrobot
