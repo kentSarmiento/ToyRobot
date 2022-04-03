@@ -1,5 +1,13 @@
+# VS Code files
+.vscode/
+
 # Catch Header File for tests
 catch.hpp
+
+# Coverage files
+html/
+coverage.info
+*.gc*
 
 # Application output
 main
