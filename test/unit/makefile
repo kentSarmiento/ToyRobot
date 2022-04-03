@@ -1,9 +1,12 @@
 CXX = g++
-CXXFLAGS = -g -Wall
+CXXFLAGS = -g -Wall -fprofile-arcs -ftest-coverage
 
 SRCDIR = ../../src
 TESTDIR = ../../test
-UNITTESTDIR= $(TESTDIR)/unit
+UNITTESTDIR = $(TESTDIR)/unit
+
+COVERAGE_INFO = $(UNITTESTDIR)/coverage.info
+HTML_OUTPUT = $(UNITTESTDIR)/html
 
 INCS = -I$(TESTDIR) \
        -I$(TESTDIR)/lib/entity \
@@ -26,4 +29,13 @@ test_main.o: $(UNITTESTDIR)/test_main.cc
 all: $(OUT)
 
 clean:
-	rm -f *.o $(OUT)
+	rm -f *.o $(TARGET) *.gc* *.info
+	rm -rf $(HTML_OUTPUT)
+
+coverage:
+	./$(OUT)
+	gcov *.gcno
+	lcov --capture --directory . --output-file $(COVERAGE_INFO)
+	lcov --remove $(COVERAGE_INFO) '/usr/include/*' '*/test/*' -o $(COVERAGE_INFO)
+	mkdir -p $(HTML_OUTPUT)
+	genhtml $(COVERAGE_INFO) --output=$(HTML_OUTPUT)
