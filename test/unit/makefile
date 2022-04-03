@@ -17,7 +17,7 @@ INCS = -I$(TESTDIR) \
 
 VALUE = directions.o request_type.o
 ENTITY = test_base_object.o robot_object.o test_robot_object.o table.o test_table.o
-REQUEST = test_base_request.o test_place_request.o
+REQUEST = test_base_request.o test_place_request.o request_factory.o test_request_factory.o
 TARGET = test_main.o
 OUT = main
 
@@ -50,6 +50,12 @@ test_base_request.o: $(UNITTESTDIR)/lib/request/test_base_request.cc
 
 test_place_request.o: $(UNITTESTDIR)/lib/request/test_place_request.cc
 	$(CXX) $(CXXFLAGS) $(INCS) -c $(UNITTESTDIR)/lib/request/test_place_request.cc
+
+request_factory.o: $(SRCDIR)/lib/request/request_factory.cc $(SRCDIR)/lib/request/request_factory.h
+	$(CXX) $(CXXFLAGS) $(INCS) -c $(SRCDIR)/lib/request/request_factory.cc
+
+test_request_factory.o: $(UNITTESTDIR)/lib/request/test_request_factory.cc
+	$(CXX) $(CXXFLAGS) $(INCS) -c $(UNITTESTDIR)/lib/request/test_request_factory.cc
 
 test_main.o: $(UNITTESTDIR)/test_main.cc
 	$(CXX) $(CXXFLAGS) $(INCS) -c $(UNITTESTDIR)/test_main.cc

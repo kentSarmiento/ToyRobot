@@ -10,9 +10,9 @@ namespace toyrobot {
 class BaseRequest {
 
 public:
-    BaseRequest(string name, int id) {
-        request_name_ = name;
-        object_id_ = id;
+    BaseRequest(string request_name, int object_id) {
+        request_name_ = request_name;
+        object_id_ = object_id;
         is_valid_ = true;
     }
 

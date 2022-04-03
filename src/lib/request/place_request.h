@@ -15,8 +15,8 @@ namespace toyrobot {
 class PlaceRequest : public BaseRequest {
 
 public:
-    PlaceRequest(int id, string args)
-        : BaseRequest(RequestType::kPlaceRequest, id) {
+    PlaceRequest(int object_id, string args)
+        : BaseRequest(RequestType::kPlaceRequest, object_id) {
         is_valid_ = false;
 
         stringstream input_stream(args);
