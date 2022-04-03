@@ -10,16 +10,19 @@ HTML_OUTPUT = $(UNITTESTDIR)/html
 
 INCS = -I$(TESTDIR) \
        -I$(TESTDIR)/lib/entity \
+       -I$(TESTDIR)/lib/request \
        -I$(SRCDIR)/lib/entity \
+       -I$(SRCDIR)/lib/request \
        -I$(SRCDIR)/lib/value
 
 VALUE = directions.o
 ENTITY = test_base_object.o robot_object.o test_robot_object.o table.o test_table.o
+REQUEST = test_base_request.o
 TARGET = test_main.o
 OUT = main
 
-$(OUT): $(TARGET) $(ENTITY) $(VALUE)
-	$(CXX) $(CXXFLAGS) -o $(OUT) $(TARGET) $(ENTITY) $(VALUE)
+$(OUT): $(TARGET) $(ENTITY) $(REQUEST) $(VALUE)
+	$(CXX) $(CXXFLAGS) -o $(OUT) $(TARGET) $(ENTITY) $(REQUEST) $(VALUE)
 
 directions.o: $(SRCDIR)/lib/value/directions.cc $(SRCDIR)/lib/value/directions.h
 	$(CXX) $(CXXFLAGS) $(INCS) -c $(SRCDIR)/lib/value/directions.cc
@@ -38,6 +41,9 @@ table.o: $(SRCDIR)/lib/entity/table.cc $(SRCDIR)/lib/entity/table.h
 
 test_table.o: $(UNITTESTDIR)/lib/entity/test_table.cc $(UNITTESTDIR)/lib/entity/test_table.h
 	$(CXX) $(CXXFLAGS) $(INCS) -c $(UNITTESTDIR)/lib/entity/test_table.cc
+
+test_base_request.o: $(UNITTESTDIR)/lib/request/test_base_request.cc
+	$(CXX) $(CXXFLAGS) $(INCS) -c $(UNITTESTDIR)/lib/request/test_base_request.cc
 
 test_main.o: $(UNITTESTDIR)/test_main.cc
 	$(CXX) $(CXXFLAGS) $(INCS) -c $(UNITTESTDIR)/test_main.cc
