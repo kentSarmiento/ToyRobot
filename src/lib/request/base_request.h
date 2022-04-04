@@ -3,6 +3,9 @@
 
 #include <string>
 
+#include "base_response.h"
+#include "table.h"
+
 using namespace std;
 
 namespace toyrobot {
@@ -15,6 +18,8 @@ public:
         object_id_ = object_id;
         is_valid_ = true;
     }
+
+    BaseResponse* Execute(Table &table);
 
     string request_name() { return request_name_; }
     int object_id() { return object_id_; }

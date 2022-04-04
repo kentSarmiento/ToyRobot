@@ -5,10 +5,8 @@
 
 namespace toyrobot {
 
-BaseRequest* RequestFactory::CreateRequest(string request_name, int object_id, string args) {
-    if (request_name == RequestType::kPlaceRequest) {
-        return new PlaceRequest(object_id, args);
-    } else if (request_name == RequestType::kLeftRequest) {
+BaseRequest* RequestFactory::CreateRequest(string request_name, int object_id) {
+    if (request_name == RequestType::kLeftRequest) {
         return new BaseRequest(request_name, object_id);
     } else if (request_name == RequestType::kRightRequest) {
         return new BaseRequest(request_name, object_id);
@@ -16,6 +14,14 @@ BaseRequest* RequestFactory::CreateRequest(string request_name, int object_id, s
         return new BaseRequest(request_name, object_id);
     } else if (request_name == RequestType::kReportRequest) {
         return new BaseRequest(request_name, object_id);
+    } else {
+        return nullptr;
+    }
+}
+
+BaseRequest* RequestFactory::CreateRequest(string request_name, int object_id, string args) {
+    if (request_name == RequestType::kPlaceRequest) {
+        return new PlaceRequest(object_id, args);
     } else {
         return nullptr;
     }

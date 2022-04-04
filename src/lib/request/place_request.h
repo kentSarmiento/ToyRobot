@@ -32,6 +32,10 @@ public:
         }
     }
 
+    BaseResponse* Execute(Table &table) {
+        table.PlaceObject(BaseObject *object);
+    }
+
     Coordinates position() { return position_; }
     Direction direction() { return direction_; }
 
