@@ -10,17 +10,17 @@ namespace toyrobot {
 class BaseResponse {
 
 public:
-    BaseResponse(string request_name, int object_id) {
+    BaseResponse(string request_name) {
         request_name_ = request_name;
-        object_id_ = object_id;
     }
 
     string request_name() { return request_name_; }
-    int object_id() { return object_id_; }
+
+    virtual void TakeValue(string &value) { value = {}; }
+    virtual void TakeValue(int &value) { value = 0; }
 
 protected:
     string request_name_;
-    int object_id_;
 };
 
 } // namespace toyrobot

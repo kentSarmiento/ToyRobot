@@ -19,9 +19,10 @@ public:
 
     ~Table();
 
-    bool IsCoordinatesPlaceable(Coordinates position);
-
+    bool IsCoordinatesAvailable(Coordinates position);
     int PlaceObject(BaseObject *object);
+
+    bool IsCoordinatesAvailable(int id, Coordinates position);
     int PlaceObject(int id, BaseObject *object);
 
     void MoveObject(int id);
@@ -39,7 +40,9 @@ private:
     BaseObject *GetObject(int id);
 
     bool IsCoordinatesValid(Coordinates position);
+
     bool IsCoordinatesFree(Coordinates position);
+    bool IsCoordinatesFree(int id, Coordinates position);
 
     bool CanObjectMove(BaseObject* object);
 };

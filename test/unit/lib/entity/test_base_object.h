@@ -20,26 +20,18 @@ public:
     TestBaseObject(const TestBaseObject &o)
         : BaseObject(o) {}
 
-    int get_id();
-    int get_x_position();
-    int get_y_position();
-    ObjectType get_type();
+    Coordinates GetMovePosition() { return Coordinates(); }
+    void Move() {}
+
+    void TurnLeft() {}
+    void TurnRight() {}
+
+    string Report() { return {}; }
+
+    int id() { return id_; }
+    int x_position() { return position().x; }
+    int y_position() { return position().y; }
+    ObjectType type() { return type_; }
 };
-
-inline int TestBaseObject::get_id() {
-    return id_;
-}
-
-inline int TestBaseObject::get_x_position() {
-    return position_.x;
-}
-
-inline int TestBaseObject::get_y_position() {
-    return position_.y;
-}
-
-inline ObjectType TestBaseObject::get_type() {
-    return type_;
-}
 
 #endif // ENTITY_TEST_BASE_OBJECT_H_

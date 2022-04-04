@@ -4,6 +4,7 @@
 #include <sstream>
 
 #include "base_request.h"
+#include "place_response.h"
 #include "coordinates.h"
 #include "directions.h"
 #include "request_type.h"
@@ -15,33 +16,28 @@ namespace toyrobot {
 class PlaceRequest : public BaseRequest {
 
 public:
-    PlaceRequest(int object_id, string args)
+    PlaceRequest(string data)
+        : BaseRequest(RequestType::kPlaceRequest) {
+        is_valid_ = false;
+        ParseData(data);
+    }
+
+    PlaceRequest(int object_id, string data)
         : BaseRequest(RequestType::kPlaceRequest, object_id) {
         is_valid_ = false;
-
-        stringstream input_stream(args);
-        char c;
-        int x, y;
-
-        if ((input_stream >> x) && (input_stream >> c) &&
-            (input_stream >> y) && (input_stream >> c) &&
-            (input_stream >> args)) {
-            position_ = Coordinates(x, y);
-            direction_ = Directions::Converter(args);
-            if (direction_ != kMaxValue) is_valid_ = true;
-        }
+        ParseData(data);
     }
 
-    BaseResponse* Execute(Table &table) {
-        table.PlaceObject(BaseObject *object);
-    }
+    BaseResponse* Execute(Table &table);
 
     Coordinates position() { return position_; }
-    Direction direction() { return direction_; }
+    Direction facing() { return facing_; }
 
 private:
     Coordinates position_;
-    Direction direction_;
+    Direction facing_;
+
+    void ParseData(string data);
 };
 
 } // namespace toyrobot

@@ -10,7 +10,7 @@ BaseResponse* RequestHandler::HandleCommand(BaseRequest* request) {
     BaseResponse *response = nullptr;
 
     if (request && request->is_valid()) {
-        response = request->Execute(&table);
+        response = request->Execute(table);
     }
 
     return response;

@@ -9,42 +9,42 @@ TEST_CASE("Table: Default constructor", "[Table]") {
     REQUIRE(table.get_object_count() == 0);
 }
 
-TEST_CASE("Table: Check placeability of coordinates", "[Table]") {
+TEST_CASE("Table: Check availability of coordinates", "[Table]") {
     TestTable table;
 
     SECTION("Free coordinates within table") {
         auto x = GENERATE(0, 1, 2, 3, 4);
         auto y = GENERATE(0, 1, 2, 3, 4);
 
-        REQUIRE(table.IsCoordinatesPlaceable(Coordinates(x,y)));
+        REQUIRE(table.IsCoordinatesAvailable(Coordinates(x,y)));
     }
 
     SECTION("X Coordinate outside of valid range") {
         auto y = GENERATE(0, 1, 2, 3, 4);
 
-        REQUIRE(table.IsCoordinatesPlaceable(Coordinates(5,y)) == false);
+        REQUIRE(table.IsCoordinatesAvailable(Coordinates(5,y)) == false);
     }
     SECTION("X Coordinate outside of valid range (negative value)") {
         auto y = GENERATE(0, 1, 2, 3, 4);
 
-        REQUIRE(table.IsCoordinatesPlaceable(Coordinates(-1,y)) == false);
+        REQUIRE(table.IsCoordinatesAvailable(Coordinates(-1,y)) == false);
     }
     SECTION("Y Coordinate outside of valid range") {
         auto x = GENERATE(0, 1, 2, 3, 4);
 
-        REQUIRE(table.IsCoordinatesPlaceable(Coordinates(x,5)) == false);
+        REQUIRE(table.IsCoordinatesAvailable(Coordinates(x,5)) == false);
     }
     SECTION("Y Coordinate outside of valid range (negative value)") {
         auto x = GENERATE(0, 1, 2, 3, 4);
 
-        REQUIRE(table.IsCoordinatesPlaceable(Coordinates(x,-1)) == false);
+        REQUIRE(table.IsCoordinatesAvailable(Coordinates(x,-1)) == false);
     }
 
     SECTION("Taken coordinates within table") {
         TestBaseObject *test_object = new TestBaseObject(Coordinates(0,0));
         table.PlaceObject(test_object);
 
-        REQUIRE(table.IsCoordinatesPlaceable(Coordinates(0,0)) == false);
+        REQUIRE(table.IsCoordinatesAvailable(Coordinates(0,0)) == false);
     }
 }
 
@@ -75,6 +75,52 @@ TEST_CASE("Table: Report status of an object", "[Table]") {
         string output = table.ReportObject(id);
 
         REQUIRE(output == "0,0,NORTH");
+    }
+}
+
+TEST_CASE("Table: Check availability of coordinates for transfer", "[Table]") {
+    TestTable table;
+    TestRobotObject *test_robot = new TestRobotObject(Coordinates(0,0), kFacingSouth);
+
+    int id = table.PlaceObject(test_robot);
+
+    SECTION("Free coordinates within table") {
+        auto x = GENERATE(1, 2, 3, 4);
+        auto y = GENERATE(1, 2, 3, 4);
+
+        REQUIRE(table.IsCoordinatesAvailable(id, Coordinates(x,y)));
+    }
+
+    SECTION("Own coordinates within table") {
+        REQUIRE(table.IsCoordinatesAvailable(id, Coordinates(0,0)));
+    }
+
+    SECTION("X Coordinate outside of valid range") {
+        auto y = GENERATE(0, 1, 2, 3, 4);
+
+        REQUIRE(table.IsCoordinatesAvailable(id, Coordinates(5,y)) == false);
+    }
+    SECTION("X Coordinate outside of valid range (negative value)") {
+        auto y = GENERATE(0, 1, 2, 3, 4);
+
+        REQUIRE(table.IsCoordinatesAvailable(id, Coordinates(-1,y)) == false);
+    }
+    SECTION("Y Coordinate outside of valid range") {
+        auto x = GENERATE(0, 1, 2, 3, 4);
+
+        REQUIRE(table.IsCoordinatesAvailable(id, Coordinates(x,5)) == false);
+    }
+    SECTION("Y Coordinate outside of valid range (negative value)") {
+        auto x = GENERATE(0, 1, 2, 3, 4);
+
+        REQUIRE(table.IsCoordinatesAvailable(id, Coordinates(x,-1)) == false);
+    }
+
+    SECTION("Taken coordinates within table") {
+        TestBaseObject *test_object = new TestBaseObject(Coordinates(1,1));
+        table.PlaceObject(test_object);
+
+        REQUIRE(table.IsCoordinatesAvailable(id, Coordinates(1,1)) == false);
     }
 }
 

@@ -11,7 +11,7 @@ Table::~Table() {
     objects_.clear();
 }
 
-bool Table::IsCoordinatesPlaceable(Coordinates position) {
+bool Table::IsCoordinatesAvailable(Coordinates position) {
     return IsCoordinatesValid(position) && IsCoordinatesFree(position);
 }
 
@@ -23,6 +23,10 @@ int Table::PlaceObject(BaseObject *object) {
     }
 
     return id;
+}
+
+bool Table::IsCoordinatesAvailable(int id, Coordinates position) {
+    return IsCoordinatesValid(position) && IsCoordinatesFree(id, position);
 }
 
 int Table::PlaceObject(int id, BaseObject *object) {
@@ -94,18 +98,25 @@ bool Table::IsCoordinatesValid(Coordinates position) {
 
 bool Table::IsCoordinatesFree(Coordinates position) {
     for (auto it = objects_.begin(); it != objects_.end(); it++)
-        if (it->second->ComparePosition(position))
+        if (it->second->position() == position)
             return false;
 
     return true;
 }
 
-bool Table::CanObjectMove(BaseObject *object) {
-    if (object) {
-        return IsCoordinatesPlaceable(object->GetMovePosition());
+bool Table::IsCoordinatesFree(int id, Coordinates position) {
+    for (auto it = objects_.begin(); it != objects_.end(); it++) {
+        if (it->second->position() == position && it->second == objects_[id])
+            return true;
+        if (it->second->position() == position)
+            return false;
     }
 
-    return false;
+    return true;
+}
+
+bool Table::CanObjectMove(BaseObject *object) {
+    return (object && IsCoordinatesAvailable(object->GetMovePosition()));
 }
 
 } // namespace toyrobot

@@ -37,25 +37,21 @@ public:
 
     virtual ~BaseObject() = default;
 
-    virtual Coordinates GetMovePosition() { return position_; }
-    virtual void Move() {}
+    virtual Coordinates GetMovePosition() = 0;
+    virtual void Move() = 0;
 
-    virtual void TurnLeft() {}
-    virtual void TurnRight() {}
+    virtual void TurnLeft() = 0;
+    virtual void TurnRight() = 0;
 
-    virtual string Report() { return {}; }
+    virtual string Report() = 0;
 
-    bool ComparePosition(Coordinates position);
+    Coordinates position() { return position_; }
 
 protected:
     int id_;
     Coordinates position_;
     ObjectType type_;
 };
-
-inline bool BaseObject::ComparePosition(Coordinates position) {
-    return (position_.x == position.x && position_.y == position.y);
-}
 
 } // namespace toyrobot
 
