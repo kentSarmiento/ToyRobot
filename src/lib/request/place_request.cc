@@ -28,8 +28,10 @@ void PlaceRequest::ParseData(string data) {
         (input_stream >> y) && (input_stream >> c) &&
         (input_stream >> data)) {
         position_ = Coordinates(x, y);
-        facing_ = Directions::Converter(data);
-        if (facing_ != kMaxValue) is_valid_ = true;
+        if (Direction::IsValidDirection(data)) {
+            facing_ = Direction(data);
+            is_valid_ = true;
+        }
     }
 }
 

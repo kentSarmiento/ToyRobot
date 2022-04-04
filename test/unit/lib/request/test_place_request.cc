@@ -1,7 +1,7 @@
 #include "catch.hpp"
 #include "place_request.h"
 #include "coordinates.h"
-#include "directions.h"
+#include "direction.h"
 #include "request_type.h"
 
 using namespace toyrobot;
@@ -16,7 +16,7 @@ TEST_CASE("PlaceRequest: Valid requests", "[PlaceRequest]") {
         REQUIRE(request.is_initial_request());
         REQUIRE(request.object_type() == ObjectType::kRobotType);
         REQUIRE(request.position() == Coordinates(0,0));
-        REQUIRE(request.facing() == kFacingNorth);
+        REQUIRE(request.facing().value() == Direction::kNorth);
     }
     SECTION("Request to set an existing object at position (1,1) facing NORTH") {
         PlaceRequest request(0, "1,1,NORTH");
@@ -27,7 +27,7 @@ TEST_CASE("PlaceRequest: Valid requests", "[PlaceRequest]") {
         REQUIRE(!request.is_initial_request());
         REQUIRE(request.object_type() == ObjectType::kRobotType);
         REQUIRE(request.position() == Coordinates(1,1));
-        REQUIRE(request.facing() == kFacingNorth);
+        REQUIRE(request.facing().value() == Direction::kNorth);
     }
     SECTION("Request to set an object at position (0,4) facing EAST") {
         PlaceRequest request("0,4,EAST");
@@ -36,7 +36,7 @@ TEST_CASE("PlaceRequest: Valid requests", "[PlaceRequest]") {
         REQUIRE(request.object_id() == 0);
         REQUIRE(request.is_valid());
         REQUIRE(request.position() == Coordinates(0,4));
-        REQUIRE(request.facing() == kFacingEast);
+        REQUIRE(request.facing().value() == Direction::kEast);
     }
     SECTION("Request to set an object at position (4,4) facing SOUTH") {
         PlaceRequest request("4,4,SOUTH");
@@ -45,7 +45,7 @@ TEST_CASE("PlaceRequest: Valid requests", "[PlaceRequest]") {
         REQUIRE(request.object_id() == 0);
         REQUIRE(request.is_valid());
         REQUIRE(request.position() == Coordinates(4,4));
-        REQUIRE(request.facing() == kFacingSouth);
+        REQUIRE(request.facing().value() == Direction::kSouth);
     }
     SECTION("Request to set an object at position (4,0) facing WEST") {
         PlaceRequest request("4,0,WEST");
@@ -54,7 +54,7 @@ TEST_CASE("PlaceRequest: Valid requests", "[PlaceRequest]") {
         REQUIRE(request.object_id() == 0);
         REQUIRE(request.is_valid());
         REQUIRE(request.position() == Coordinates(4,0));
-        REQUIRE(request.facing() == kFacingWest);
+        REQUIRE(request.facing().value() == Direction::kWest);
     }
 }
 

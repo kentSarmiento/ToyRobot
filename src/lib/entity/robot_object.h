@@ -2,7 +2,7 @@
 #define ENTITY_ROBOT_OBJECT_H_
 
 #include "base_object.h"
-#include "directions.h"
+#include "direction.h"
 
 namespace toyrobot {
 
@@ -11,7 +11,6 @@ class RobotObject : public BaseObject {
 public:
     RobotObject() : BaseObject() {
         type_ = kRobotType;
-        facing_ = kFacingNorth;
     }
 
     RobotObject(Coordinates position, Direction facing)
@@ -36,11 +35,11 @@ protected:
 };
 
 inline void RobotObject::TurnLeft() {
-    Directions::TurnLeft(facing_);
+    facing_.TurnLeft();
 }
 
 inline void RobotObject::TurnRight() {
-    Directions::TurnRight(facing_);
+    facing_.TurnRight();
 }
 
 } // namespace toyrobot

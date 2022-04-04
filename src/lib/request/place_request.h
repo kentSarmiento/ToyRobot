@@ -6,7 +6,7 @@
 #include "base_request.h"
 #include "place_response.h"
 #include "coordinates.h"
-#include "directions.h"
+#include "direction.h"
 #include "request_type.h"
 
 using namespace std;

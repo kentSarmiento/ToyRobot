@@ -19,7 +19,7 @@ INCS = -I$(TESTDIR) \
        -I$(SRCDIR)/lib/response \
        -I$(SRCDIR)/lib/value
 
-VALUE = directions.o request_type.o
+VALUE = direction.o request_type.o
 ENTITY = robot_object.o object_factory.o table.o
 REQUEST = request_factory.o place_request.o
 HANDLER = request_handler.o
@@ -35,8 +35,8 @@ OUT = main
 $(OUT): $(TARGET) $(ENTITY) $(REQUEST) $(HANDLER) $(VALUE) $(TESTS)
 	$(CXX) $(CXXFLAGS) -o $(OUT) $(TARGET) $(ENTITY) $(REQUEST) $(HANDLER) $(VALUE) $(TESTS)
 
-directions.o: $(SRCDIR)/lib/value/directions.cc $(SRCDIR)/lib/value/directions.h
-	$(CXX) $(CXXFLAGS) $(INCS) -c $(SRCDIR)/lib/value/directions.cc
+direction.o: $(SRCDIR)/lib/value/direction.cc $(SRCDIR)/lib/value/direction.h
+	$(CXX) $(CXXFLAGS) $(INCS) -c $(SRCDIR)/lib/value/direction.cc
 
 request_type.o: $(SRCDIR)/lib/value/request_type.cc $(SRCDIR)/lib/value/request_type.h
 	$(CXX) $(CXXFLAGS) $(INCS) -c $(SRCDIR)/lib/value/request_type.cc

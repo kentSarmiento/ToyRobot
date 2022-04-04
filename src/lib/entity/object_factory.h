@@ -4,7 +4,7 @@
 #include "base_object.h"
 #include "object_type.h"
 #include "coordinates.h"
-#include "directions.h"
+#include "direction.h"
 
 namespace toyrobot {
 

@@ -1,7 +1,7 @@
 #include <sstream>
 
 #include "robot_object.h"
-#include "directions.h"
+#include "direction.h"
 
 using namespace std;
 
@@ -11,25 +11,10 @@ Coordinates RobotObject::GetMovePosition() {
     int x = position_.x;
     int y = position_.y;
 
-    switch (facing_) {
-        case kFacingNorth: {
-            y++;
-            break;
-        }
-        case kFacingEast: {
-            x++;
-            break;
-        }
-        case kFacingSouth: {
-            y--;
-            break;
-        }
-        case kFacingWest:
-        default: {
-            x--;
-            break;
-        }
-    }
+    if (facing_.value() == Direction::kNorth) y++;
+    else if (facing_.value() == Direction::kEast) x++;
+    else if (facing_.value() == Direction::kSouth) y--;
+    else if (facing_.value() == Direction::kWest) x--;
 
     return Coordinates(x, y);
 }
@@ -42,7 +27,7 @@ string RobotObject::Report() {
     stringstream outstream;
     outstream << position_.x << ",";
     outstream << position_.y << ",";
-    outstream << Directions::Converter(facing_);
+    outstream << facing_.value();
     return outstream.str();
 }
 
