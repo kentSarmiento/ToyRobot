@@ -19,8 +19,10 @@ public:
 };
 
 inline BaseResponse* ReportRequest::Execute(Table &table) {
+    ReportResponse *response = nullptr;
     string report = table.ReportObject(object_id_);
-    ReportResponse *response = new ReportResponse(report);
+    if (!report.empty())
+        response = new ReportResponse(report);
     return response;
 }
 
