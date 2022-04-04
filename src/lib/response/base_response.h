@@ -14,6 +14,8 @@ public:
         request_name_ = request_name;
     }
 
+    virtual ~BaseResponse() = default;
+
     string request_name() { return request_name_; }
 
     virtual void TakeValue(string &value) { value = {}; }

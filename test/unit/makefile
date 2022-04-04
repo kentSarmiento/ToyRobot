@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -g -Wall -fprofile-arcs -ftest-coverage
+CXXFLAGS = -g -Wall -Werror -fprofile-arcs -ftest-coverage
 
 SRCDIR = ../../src
 TESTDIR = ../../test
