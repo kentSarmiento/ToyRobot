@@ -1,6 +1,9 @@
 #ifndef VALUE_COORDINATES_H_
 #define VALUE_COORDINATES_H_
 
+#include <iostream>
+using namespace std;
+
 namespace toyrobot {
 
 struct Coordinates {
@@ -14,6 +17,8 @@ struct Coordinates {
         return x == pos.x && y == pos.y;
     }
 };
+
+ostream& operator<<(ostream& os, const Coordinates& pos);
 
 } // namespace toyrobot
 

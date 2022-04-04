@@ -25,9 +25,7 @@ void RobotObject::Move() {
 
 string RobotObject::Report() {
     stringstream outstream;
-    outstream << position_.x << ",";
-    outstream << position_.y << ",";
-    outstream << facing_;
+    outstream << position_ << "," << facing_;
     return outstream.str();
 }
 
