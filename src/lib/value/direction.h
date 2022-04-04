@@ -17,19 +17,23 @@ public:
         value_ = d;
     }
 
-    static const string kNorth;
-    static const string kEast;
-    static const string kSouth;
-    static const string kWest;
-
     static bool IsValidDirection(string d);
 
     void TurnLeft();
     void TurnRight();
 
-    string value() { return value_; }
+    bool IsNorth() { return value_ == kNorth; }
+    bool IsEast() { return value_ == kEast; }
+    bool IsSouth() { return value_ == kSouth; }
+    bool IsWest() { return value_ == kWest; }
+
+    friend ostream& operator<<(ostream& os, const Direction& d);
 
 private:
+    static const string kNorth;
+    static const string kEast;
+    static const string kSouth;
+    static const string kWest;
 
     string value_;
 };

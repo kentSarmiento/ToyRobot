@@ -8,9 +8,7 @@ const string Direction::kSouth = "SOUTH";
 const string Direction::kWest = "WEST";
 
 bool Direction::IsValidDirection(string d) {
-    if (d != kNorth && d != kEast && d != kSouth && d != kWest)
-        return false;
-    return true;
+    return (d == kNorth || d == kEast || d == kSouth || d == kWest);
 }
 
 void Direction::TurnLeft() {
@@ -25,6 +23,11 @@ void Direction::TurnRight() {
     else if (value_ == kEast) value_ = kSouth;
     else if (value_ == kSouth) value_ = kWest;
     else if (value_ == kWest) value_ = kNorth;
+}
+
+ostream& operator<<(ostream& os, const Direction& d) {
+    os << d.value_;
+    return os;
 }
 
 } // namespace toyrobot

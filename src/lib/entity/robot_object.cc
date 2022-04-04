@@ -11,10 +11,10 @@ Coordinates RobotObject::GetMovePosition() {
     int x = position_.x;
     int y = position_.y;
 
-    if (facing_.value() == Direction::kNorth) y++;
-    else if (facing_.value() == Direction::kEast) x++;
-    else if (facing_.value() == Direction::kSouth) y--;
-    else if (facing_.value() == Direction::kWest) x--;
+    if (facing_.IsNorth()) y++;
+    else if (facing_.IsEast()) x++;
+    else if (facing_.IsSouth()) y--;
+    else if (facing_.IsWest()) x--;
 
     return Coordinates(x, y);
 }
@@ -27,7 +27,7 @@ string RobotObject::Report() {
     stringstream outstream;
     outstream << position_.x << ",";
     outstream << position_.y << ",";
-    outstream << facing_.value();
+    outstream << facing_;
     return outstream.str();
 }
 

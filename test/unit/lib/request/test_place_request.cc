@@ -16,7 +16,7 @@ TEST_CASE("PlaceRequest: Valid requests", "[PlaceRequest]") {
         REQUIRE(request.is_initial_request());
         REQUIRE(request.object_type() == ObjectType::kRobotType);
         REQUIRE(request.position() == Coordinates(0,0));
-        REQUIRE(request.facing().value() == Direction::kNorth);
+        REQUIRE(request.facing().IsNorth());
     }
     SECTION("Request to set an existing object at position (1,1) facing NORTH") {
         PlaceRequest request(0, "1,1,NORTH");
@@ -27,7 +27,7 @@ TEST_CASE("PlaceRequest: Valid requests", "[PlaceRequest]") {
         REQUIRE(!request.is_initial_request());
         REQUIRE(request.object_type() == ObjectType::kRobotType);
         REQUIRE(request.position() == Coordinates(1,1));
-        REQUIRE(request.facing().value() == Direction::kNorth);
+        REQUIRE(request.facing().IsNorth());
     }
     SECTION("Request to set an object at position (0,4) facing EAST") {
         PlaceRequest request("0,4,EAST");
@@ -36,7 +36,7 @@ TEST_CASE("PlaceRequest: Valid requests", "[PlaceRequest]") {
         REQUIRE(request.object_id() == 0);
         REQUIRE(request.is_valid());
         REQUIRE(request.position() == Coordinates(0,4));
-        REQUIRE(request.facing().value() == Direction::kEast);
+        REQUIRE(request.facing().IsEast());
     }
     SECTION("Request to set an object at position (4,4) facing SOUTH") {
         PlaceRequest request("4,4,SOUTH");
@@ -45,7 +45,7 @@ TEST_CASE("PlaceRequest: Valid requests", "[PlaceRequest]") {
         REQUIRE(request.object_id() == 0);
         REQUIRE(request.is_valid());
         REQUIRE(request.position() == Coordinates(4,4));
-        REQUIRE(request.facing().value() == Direction::kSouth);
+        REQUIRE(request.facing().IsSouth());
     }
     SECTION("Request to set an object at position (4,0) facing WEST") {
         PlaceRequest request("4,0,WEST");
@@ -54,7 +54,7 @@ TEST_CASE("PlaceRequest: Valid requests", "[PlaceRequest]") {
         REQUIRE(request.object_id() == 0);
         REQUIRE(request.is_valid());
         REQUIRE(request.position() == Coordinates(4,0));
-        REQUIRE(request.facing().value() == Direction::kWest);
+        REQUIRE(request.facing().IsWest());
     }
 }
 
