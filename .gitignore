@@ -14,3 +14,6 @@ main
 
 # Object files
 *.o
+
+# Input files
+input*.txt
