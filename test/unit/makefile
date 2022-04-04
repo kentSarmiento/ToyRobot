@@ -9,10 +9,11 @@ COVERAGE_INFO = $(UNITTESTDIR)/coverage.info
 HTML_OUTPUT = $(UNITTESTDIR)/html
 
 INCS = -I$(TESTDIR) \
-       -I$(TESTDIR)/lib/entity \
-       -I$(TESTDIR)/lib/request \
-       -I$(TESTDIR)/lib/handler \
-       -I$(TESTDIR)/lib/response \
+       -I$(UNITTESTDIR) \
+       -I$(UNITTESTDIR)/lib/entity \
+       -I$(UNITTESTDIR)/lib/request \
+       -I$(UNITTESTDIR)/lib/handler \
+       -I$(UNITTESTDIR)/lib/response \
        -I$(SRCDIR)/lib/entity \
        -I$(SRCDIR)/lib/request \
        -I$(SRCDIR)/lib/handler \
@@ -24,6 +25,7 @@ ENTITY = robot_object.o object_factory.o table.o
 REQUEST = request_factory.o place_request.o
 HANDLER = request_handler.o
 
+TESTER = catch.hpp
 TESTS = test_base_object.o test_robot_object.o test_object_factory.o test_table.o \
         test_place_request.o test_left_request.o test_right_request.o \
         test_move_request.o test_report_request.o test_request_factory.o \
@@ -32,8 +34,11 @@ TESTS = test_base_object.o test_robot_object.o test_object_factory.o test_table.
 TARGET = test_main.o
 OUT = main
 
-$(OUT): $(TARGET) $(ENTITY) $(REQUEST) $(HANDLER) $(VALUE) $(TESTS)
+$(OUT): $(TESTER) $(TARGET) $(ENTITY) $(REQUEST) $(HANDLER) $(VALUE) $(TESTS)
 	$(CXX) $(CXXFLAGS) -o $(OUT) $(TARGET) $(ENTITY) $(REQUEST) $(HANDLER) $(VALUE) $(TESTS)
+
+catch.hpp:
+	test -f $(TESTDIR)/catch.hpp || wget -O $(TESTDIR)/catch.hpp https://raw.githubusercontent.com/catchorg/Catch2/v2.x/single_include/catch2/catch.hpp
 
 coordinates.o: $(SRCDIR)/lib/value/coordinates.cc $(SRCDIR)/lib/value/coordinates.h
 	$(CXX) $(CXXFLAGS) $(INCS) -c $(SRCDIR)/lib/value/coordinates.cc

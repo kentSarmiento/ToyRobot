@@ -6,6 +6,7 @@ TESTDIR = ../../test
 INTEGRATIONTESTDIR = $(TESTDIR)/integration
 
 INCS = -I$(TESTDIR) \
+       -I$(INTEGRATIONTESTDIR) \
        -I$(SRCDIR)/lib/entity \
        -I$(SRCDIR)/lib/request \
        -I$(SRCDIR)/lib/handler \
@@ -17,12 +18,16 @@ ENTITY = robot_object.o object_factory.o table.o
 REQUEST = request_factory.o place_request.o
 HANDLER = request_handler.o
 
+TESTER = catch.hpp
 TESTS = test_single.o
 TARGET = test_main.o
 OUT = main
 
-$(OUT): $(TARGET) $(ENTITY) $(REQUEST) $(HANDLER) $(VALUE) $(TESTS)
+$(OUT): $(TESTER) $(TARGET) $(ENTITY) $(REQUEST) $(HANDLER) $(VALUE) $(TESTS)
 	$(CXX) $(CXXFLAGS) -o $(OUT) $(TARGET) $(ENTITY) $(REQUEST) $(HANDLER) $(VALUE) $(TESTS)
+
+catch.hpp:
+	test -f $(TESTDIR)/catch.hpp || wget -O $(TESTDIR)/catch.hpp https://raw.githubusercontent.com/catchorg/Catch2/v2.x/single_include/catch2/catch.hpp
 
 coordinates.o: $(SRCDIR)/lib/value/coordinates.cc $(SRCDIR)/lib/value/coordinates.h
 	$(CXX) $(CXXFLAGS) $(INCS) -c $(SRCDIR)/lib/value/coordinates.cc
