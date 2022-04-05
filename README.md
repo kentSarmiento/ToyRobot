@@ -74,6 +74,8 @@ Sample input files are available below:
 This input file contains sample Input and Output from the Specifications
 * [input2.txt](test/input/input2.txt)  
 This input file contains multiple invalid commands to test that the Application is robust to User input.
+* [input3.txt](test/input/input3.txt)  
+This input file makes a toy robot traverse the whole table while trying not to fall.
 
 ### Testing the project
 

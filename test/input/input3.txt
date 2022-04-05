@@ -1,0 +1,143 @@
+# This input file makes a toy robot traverse the whole table while trying not to fall
+#
+# Expected Output:
+# Output: 0,0,NORTH
+# ... traverses all positions in the table
+
+PLACE 0,0,NORTH
+MOVE
+REPORT
+MOVE
+REPORT
+MOVE
+REPORT
+MOVE
+REPORT
+
+# Will not fall nor move from 0,4,NORTH
+MOVE
+REPORT
+MOVE
+REPORT
+
+# Turn right and move
+RIGHT
+REPORT
+MOVE
+REPORT
+MOVE
+REPORT
+MOVE
+REPORT
+MOVE
+REPORT
+
+# Will not fall nor move from 4,4,EAST
+MOVE
+REPORT
+
+# Turn right and move
+RIGHT
+REPORT
+MOVE
+REPORT
+MOVE
+REPORT
+MOVE
+REPORT
+MOVE
+REPORT
+
+# Will not fall nor move from 4,0,SOUTH
+MOVE
+REPORT
+
+# Turn right and move
+RIGHT
+REPORT
+MOVE
+REPORT
+MOVE
+REPORT
+MOVE
+REPORT
+MOVE
+REPORT
+
+# Will not fall nor move from 0,0,WEST
+MOVE
+REPORT
+MOVE
+REPORT
+
+# Turn right and move
+RIGHT
+REPORT
+MOVE
+REPORT
+
+# Turn right and move
+RIGHT
+REPORT
+MOVE
+REPORT
+MOVE
+REPORT
+MOVE
+REPORT
+MOVE
+REPORT
+
+# Will not fall nor move from 4,1,EAST
+MOVE
+REPORT
+MOVE
+REPORT
+
+# Turn left and move
+LEFT
+REPORT
+MOVE
+REPORT
+
+# Turn left and move
+LEFT
+REPORT
+MOVE
+REPORT
+MOVE
+REPORT
+MOVE
+REPORT
+MOVE
+REPORT
+
+# Will not fall nor move from 0,2,WEST
+MOVE
+REPORT
+MOVE
+REPORT
+
+# Turn right and move
+RIGHT
+REPORT
+MOVE
+REPORT
+
+# Turn right and move
+RIGHT
+REPORT
+MOVE
+REPORT
+MOVE
+REPORT
+MOVE
+REPORT
+MOVE
+REPORT
+
+# Will not fall nor move from 4,3,EAST
+MOVE
+REPORT
+MOVE
+REPORT
