@@ -78,7 +78,7 @@ To build the tests, `wget` should be available in the environment to download `c
 #### Integration Test
 
 Integration tests are implemented to verify the Specifications implemented in the project.  
-For more information about the Integration Test implementation, refer to [test documentation](test/README.md).
+For more information about the Integration Test implementation, refer to [test documentation](test/README.md#integration-test).
 
 In the `test/integration` directory, the tests can be built from the commmand line using `make` command.
 ```
@@ -93,7 +93,7 @@ make test
 #### Unit Test
 
 Unit tests are implemented to verify implementation of each Unit in the project.  
-For more information about the Unit Test implementation, refer to [test documentation](test/README.md).
+For more information about the Unit Test implementation, refer to [test documentation](test/README.md#unit-test).
 
 In the `test/unit` directory, the tests can be built from the commmand line using `make` command.
 ```
@@ -103,4 +103,9 @@ make
 Then, the tests can be executed using `make test` command.
 ```
 make test
+```
+
+In addition, coverage can be measured using `make coverage` command (`lcov` is used).
+```
+make coverage
 ```
