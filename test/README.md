@@ -70,8 +70,8 @@ make leak_check
 
 ### Current Unit Test Statistics
 
-* Number of test cases: 35
-* Number of assertions: 536
+* Number of test cases: 37
+* Number of assertions: 566
 * Coverage:
-  * Lines: 100% (293 of 293 lines)
-  * Functions: 97.6% (81 of 83 lines)
+  * Lines: 100% (308 of 308 lines)
+  * Functions: 97.8% (87 of 89 lines)

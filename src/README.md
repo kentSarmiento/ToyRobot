@@ -9,14 +9,28 @@ The [`entity`](lib/entity/) module contains the `Table` and `Object` classes.
 The classes has an Aggregate relationship (Table is the aggregate root, which could contain one or more Object).  
 * [table](lib/entity/table.h)  
   Aggregate root. Can contain one or more Objects.
-  
 * objects
   * [robot](lib/entity/robot_object.h)  
   An object which can be added into the table.
 
 ### Handler
 
-The [`handler`](lib/handler/) module receives requests from the application.
+The [`handler`](lib/handler/) module receives requests from the application.  
+An Application needs to have a [RequestHandler](lib/handler/request_handler.h) object to use the Library.
+
+The following are the main methods an Application is expected to use:
+* `RequestHandler::CreateRequest()`  
+Method to create requests/commands.
+* `RequestHandler::HandleCommmand()`  
+Method to execute the requests/commands.
+
+Sample application:
+```
+  RequestHandler handler;
+
+  BaseRequest *request = handler.CreateRequest("PLACE", "0,0,NORTH");
+  BaseResponse *response = handler.HandleCommand(request);
+```
 
 ### Request
 

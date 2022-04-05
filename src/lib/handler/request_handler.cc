@@ -1,6 +1,5 @@
 #include "request_handler.h"
-#include "base_request.h"
-#include "base_response.h"
+#include "request_factory.h"
 #include "table.h"
 
 namespace toyrobot {
@@ -10,6 +9,18 @@ RequestHandler::~RequestHandler() {
         if (it.first) delete it.first;
         if (it.second) delete it.second;
     }
+}
+
+BaseRequest* RequestHandler::CreateRequest(string request_name, int object_id, string data) {
+    BaseRequest *request;
+
+    if (request_name == RequestType::kPlaceRequest) {
+        request = RequestFactory::CreateRequest(request_name, object_id, data);
+    } else {
+        request = RequestFactory::CreateRequest(request_name, object_id);
+    }
+
+    return request;
 }
 
 BaseResponse* RequestHandler::HandleCommand(BaseRequest* request) {
