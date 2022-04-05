@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [ '*' ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build Source Project
+      run: cd src && make
+
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup
+      run: sudo apt-get update && sudo apt install -y lcov
+    - name: Build Unit Test
+      run: |
+        cd test/unit
+        make
+    - name: Execute Tests
+      run: |
+        cd test/unit
+        make test
+    - name: Coverage
+      run: |
+        cd test/unit
+        make coverage
+    - name: Archive coverage results
+      uses: actions/upload-artifact@v3
+      with:
+        name: coverage-report
+        path: test/unit/html/*
+  
+  integration:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build Integration Test
+      run: |
+        cd test/integration
+        make
+    - name: Execute Tests
+      run: |
+        cd test/integration
+        make test
