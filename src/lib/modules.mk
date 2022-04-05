@@ -1,24 +1,18 @@
-CXX = g++
-CXXFLAGS = -g -Wall
+INCS += -I$(SRCDIR)/lib/entity \
+        -I$(SRCDIR)/lib/request \
+        -I$(SRCDIR)/lib/handler \
+        -I$(SRCDIR)/lib/response \
+        -I$(SRCDIR)/lib/value
 
-SRCDIR = ../../src
-
-INCS = -I$(SRCDIR)/lib/entity \
-       -I$(SRCDIR)/lib/request \
-       -I$(SRCDIR)/lib/handler \
-       -I$(SRCDIR)/lib/response \
-       -I$(SRCDIR)/lib/value
-
-VALUE = coordinates.o direction.o request_type.o
-ENTITY = robot_object.o object_factory.o table.o
-REQUEST = request_factory.o place_request.o
-HANDLER = request_handler.o
-
-TARGET = single.o
-OUT = main
-
-$(OUT): $(TARGET) $(ENTITY) $(REQUEST) $(HANDLER) $(VALUE)
-	$(CXX) $(CXXFLAGS) -o $(OUT) $(TARGET) $(ENTITY) $(REQUEST) $(HANDLER) $(VALUE)
+LIBRARY = coordinates.o \
+          direction.o \
+          request_type.o \
+          robot_object.o \
+          object_factory.o \
+          table.o \
+          request_factory.o \
+          place_request.o \
+          request_handler.o
 
 coordinates.o: $(SRCDIR)/lib/value/coordinates.cc $(SRCDIR)/lib/value/coordinates.h
 	$(CXX) $(CXXFLAGS) $(INCS) -c $(SRCDIR)/lib/value/coordinates.cc
@@ -46,17 +40,3 @@ place_request.o: $(SRCDIR)/lib/request/place_request.cc $(SRCDIR)/lib/request/pl
 
 request_handler.o: $(SRCDIR)/lib/handler/request_handler.cc $(SRCDIR)/lib/handler/request_handler.h
 	$(CXX) $(CXXFLAGS) $(INCS) -c $(SRCDIR)/lib/handler/request_handler.cc
-
-single.o: $(SRCDIR)/apps/single.cc
-	$(CXX) $(CXXFLAGS) $(INCS) -c $(SRCDIR)/apps/single.cc
-
-all: $(OUT)
-
-clean:
-	rm -f $(ENTITY) $(REQUEST) $(HANDLER) $(VALUE)
-
-all_clean:
-	rm -f $(OUT) *.o
-
-test:
-	./$(OUT)
