@@ -124,3 +124,8 @@ Memory Leak can be checked using `make leak_check` command (`valgrind` is needed
 ```
 make leak_check
 ```
+
+### Project CI
+
+The project uses Github Actions to automate build and tests for each commit
+* [c-cpp.yml](.github/workflows/c-cpp.yml) file used for build and test automation
