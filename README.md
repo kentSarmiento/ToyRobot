@@ -28,15 +28,15 @@ The application should handle error states appropriately and be robust to user i
 
 * [Source Implementation](src/)  
 Source Implementation contains the following:
-  * [Library](src/lib/)  
+  * [Library](src/README.md#library)  
   Implements a library to be used for the challenge.
-  * [Application](src/apps/)  
+  * [Application](src/README.md#application)  
   Uses the Library to implement a Single Toy Robot moving on the table top.
 
 * [Test Implementation](test/)  
 Test Implementation contains two levels of tests:
-  * [Integration Test](test/integration/)  
-  * [Unit Test](test/unit/)  
+  * [Integration Test](test/README.md#integration-test)  
+  * [Unit Test](test/README.md#unit-test)  
 
 ## Project Setup and Usage
 
