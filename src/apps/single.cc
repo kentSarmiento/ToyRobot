@@ -21,7 +21,7 @@ int main() {
         if (request_handler.IsPlaceCommand(request_name))
             cin >> request_data;
 
-        request_handler.CreateRequest(request_name, robot_id, request_data);
+        request = request_handler.CreateRequest(request_name, robot_id, request_data);
 
         if (request) {
             BaseResponse *response = request_handler.HandleCommand(request);
