@@ -52,7 +52,16 @@ The [single robot](apps/single.cc) is a sample application which solves the [cod
 
 A single robot can be placed and controlled within the Table.
 
-Commmands can be received from the command line or from an input file.
+#### How to Run the Application
+
+In the `src` directory, the application can be built from the command line using `make` command.
+```
+make
+```
+
+An executable named `main` is created after the compilation is successful.
+
+When the Application is executed, commmands can be received from the command line or from an input file.
 * Running the application and sending commands from standard input
   ```
   ./main
