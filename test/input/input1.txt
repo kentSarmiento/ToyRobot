@@ -1,0 +1,25 @@
+# This input file contains Sample Input and Output from Specs
+#
+# Expected Output:
+# Output: 0,1,NORTH
+# Output: 0,0,WEST
+# Output: 3,3,NORTH
+
+a)----------------
+PLACE 0,0,NORTH
+MOVE
+REPORT
+
+b)----------------
+PLACE 0,0,NORTH
+LEFT
+REPORT
+
+c)----------------
+PLACE 1,2,EAST
+MOVE
+MOVE
+LEFT
+MOVE
+REPORT
+

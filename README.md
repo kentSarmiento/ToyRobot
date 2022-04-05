@@ -55,7 +55,7 @@ For more information and other features, refer to [src documentation](src/README
 
 ### Running the project
 
-After the project is built, the application can be executed from the command line.  
+After the project is built, the Application can be executed from the command line.  
 
 Input commands can be provided from file or standard input.  
 * Using standard input
@@ -66,6 +66,14 @@ Input commands can be provided from file or standard input.
    ```
    ./main < {location of input file}
    ```
+
+#### File inputs for the Application
+
+Sample input files are available below:
+* [input1.txt](test/input/input1.txt)  
+This input file contains sample Input and Output from the Specifications
+* [input2.txt](test/input/input2.txt)  
+This input file contains multiple invalid commands to test that the Application is robust to User input.
 
 ### Testing the project
 

@@ -1,0 +1,46 @@
+# This input file contains multiple invalid commands at the start
+#
+# Expected Output:
+# Output: 4,4,NORTH
+# Output: 4,4,NORTH
+
+# Invalid Commands:
+RANDOM
+INVALID
+REPORT
+REPORT
+LEFT
+RIGHT
+REPORT
+MOVE
+PLACE 4
+REPORT
+PLACE 2
+REPORT
+PLACE 1,2
+REPORT
+PLACE 3,3,
+REPORT
+PLACE 3,3,NORTHR
+REPORT
+PLACE 5,5,NORTH
+REPORT
+
+# Only Correct Input:
+PLACE 4,4,NORTH
+
+# Displays Correct Input:
+REPORT
+
+# Invalid Commands:
+PLACE 0,0,NORTH,1,2
+PLACE 5,5,EAST
+PLACE 4
+PLACE 2
+PLACE 1,2
+PLACE 3,3,
+PLACE 3,3,NORTHR
+PLACE 5,5,NORTH
+
+# Displays Correct Input from earlier:
+REPORT

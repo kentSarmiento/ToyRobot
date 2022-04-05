@@ -15,8 +15,5 @@ main
 # Object files
 *.o
 
-# Input files
-input*.txt
-
 # Memory leak test output files
 valgrind.txt
