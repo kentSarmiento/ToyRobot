@@ -9,29 +9,30 @@ using namespace std;
 using namespace toyrobot;
 
 int main() {
+    RequestHandler request_handler;
     int robot_id = -1;
 
     while (1) {
-        string command_name;
-        string data;
+        string request_name;
+        string request_data;
 
-        cin >> command_name;
+        cin >> request_name;
 
-        BaseRequest *command;
-        if (command_name == RequestType::kPlaceRequest) {
-            cin >> data;
-            command = RequestFactory::CreateRequest(command_name, robot_id, data);
+        BaseRequest *request;
+        if (request_name == RequestType::kPlaceRequest) {
+            cin >> request_data;
+            request = RequestFactory::CreateRequest(request_name, robot_id, request_data);
         } else {
-            command = RequestFactory::CreateRequest(command_name, robot_id);
+            request = RequestFactory::CreateRequest(request_name, robot_id);
         }
 
-        if (command) {
-            BaseResponse *response = RequestHandler::HandleCommand(command);
+        if (request) {
+            BaseResponse *response = request_handler.HandleCommand(request);
 
             if (response) {
-                if (command_name == RequestType::kPlaceRequest) {
+                if (request_name == RequestType::kPlaceRequest) {
                     response->TakeValue(robot_id);
-                } else if (command_name == RequestType::kReportRequest) {
+                } else if (request_name == RequestType::kReportRequest) {
                     string report;
                     response ->TakeValue(report);
                     cout << "Output: " << report << endl;

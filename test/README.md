@@ -58,15 +58,20 @@ Then, the tests can be executed using `make test` command.
 make test
 ```
 
-In addition, coverage can be measured using `make coverage` command (`lcov` is used).
+Coverage can be measured using `make coverage` command (`lcov` is needed).
 ```
 make coverage
+```
+
+Memory Leak can be checked using `make leak_check` command (`valgrind` is needed).
+```
+make leak_check
 ```
 
 ### Current Unit Test Statistics
 
 * Number of test cases: 35
-* Number of assertions: 533
+* Number of assertions: 536
 * Coverage:
-  * Lines: 100% (287 of 287 lines)
-  * Functions: 97.5% (79 of 81 lines)
+  * Lines: 100% (293 of 293 lines)
+  * Functions: 97.6% (81 of 83 lines)

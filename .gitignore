@@ -17,3 +17,6 @@ main
 
 # Input files
 input*.txt
+
+# Memory leak test output files
+valgrind.txt

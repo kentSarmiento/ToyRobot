@@ -72,3 +72,6 @@ all_clean:
 
 test:
 	./$(OUT)
+
+leak_check:
+	valgrind --log-file=valgrind.txt --leak-check=full ./$(OUT)

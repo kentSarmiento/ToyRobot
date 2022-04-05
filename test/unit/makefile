@@ -133,3 +133,6 @@ coverage:
 	lcov --remove $(COVERAGE_INFO) '/usr/include/*' '*/test/*' -o $(COVERAGE_INFO)
 	mkdir -p $(HTML_OUTPUT)
 	genhtml $(COVERAGE_INFO) --output=$(HTML_OUTPUT)
+
+leak_check:
+	valgrind --log-file=valgrind.txt --leak-check=full ./$(OUT)

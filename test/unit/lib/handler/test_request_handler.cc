@@ -11,41 +11,43 @@ using namespace std;
 using namespace toyrobot;
 
 TEST_CASE("RequestHandler: Create Requests", "[RequestHandler]") {
+    RequestHandler request_handler;
 
     SECTION("Handle PLACE Request") {
         BaseRequest *request = RequestFactory::CreateRequest(RequestType::kPlaceRequest, "0,0,NORTH");
-        BaseResponse *response = RequestHandler::HandleCommand(request);
+        BaseResponse *response = request_handler.HandleCommand(request);
         int object_id;
         response->TakeValue(object_id);
 
         REQUIRE(response);
-    }
-    SECTION("Handle REPORT Request") {
-        BaseRequest *request = RequestFactory::CreateRequest(RequestType::kReportRequest, 0);
-        BaseResponse *response = RequestHandler::HandleCommand(request);
 
-        REQUIRE(response);
-        string report;
-        response->TakeValue(report);
+        SECTION("Handle REPORT Request") {
+            BaseRequest *request = RequestFactory::CreateRequest(RequestType::kReportRequest, 0);
+            BaseResponse *response = request_handler.HandleCommand(request);
 
-        REQUIRE(report == "0,0,NORTH");
-    }
-    SECTION("Handle LEFT Request") {
-        BaseRequest *request = RequestFactory::CreateRequest(RequestType::kLeftRequest, 0);
-        BaseResponse *response = RequestHandler::HandleCommand(request);
+            REQUIRE(response);
+            string report;
+            response->TakeValue(report);
 
-        REQUIRE(response);
-    }
-    SECTION("Handle RIGHT Request") {
-        BaseRequest *request = RequestFactory::CreateRequest(RequestType::kRightRequest, 0);
-        BaseResponse *response = RequestHandler::HandleCommand(request);
+            REQUIRE(report == "0,0,NORTH");
+        }
+        SECTION("Handle LEFT Request") {
+            BaseRequest *request = RequestFactory::CreateRequest(RequestType::kLeftRequest, 0);
+            BaseResponse *response = request_handler.HandleCommand(request);
 
-        REQUIRE(response);
-    }
-    SECTION("Handle MOVE Request") {
-        BaseRequest *request = RequestFactory::CreateRequest(RequestType::kMoveRequest, 0);
-        BaseResponse *response = RequestHandler::HandleCommand(request);
+            REQUIRE(response);
+        }
+        SECTION("Handle RIGHT Request") {
+            BaseRequest *request = RequestFactory::CreateRequest(RequestType::kRightRequest, 0);
+            BaseResponse *response = request_handler.HandleCommand(request);
 
-        REQUIRE(response);
+            REQUIRE(response);
+        }
+        SECTION("Handle MOVE Request") {
+            BaseRequest *request = RequestFactory::CreateRequest(RequestType::kMoveRequest, 0);
+            BaseResponse *response = request_handler.HandleCommand(request);
+
+            REQUIRE(response);
+        }
     }
 }
