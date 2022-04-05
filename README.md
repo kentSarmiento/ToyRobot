@@ -1,4 +1,4 @@
-# Toy Robot Code Challenge
+# Toy Robot Code Challenge [![CI](https://github.com/kentSarmiento/ToyRobot/actions/workflows/ci.yml/badge.svg)](https://github.com/kentSarmiento/ToyRobot/actions/workflows/ci.yml)
 
 This project contains a Solution to a Toy Robot Coding Challenge.
 
@@ -127,5 +127,8 @@ make leak_check
 
 ### Project CI
 
-The project uses Github Actions to automate build and tests for each commit
-* [c-cpp.yml](.github/workflows/c-cpp.yml) file used for build and test automation
+The project uses Github Actions to automate build and tests
+* [ci.yml](.github/workflows/ci.yml) file used for the following workflow
+  * Build
+  * Unit Test (archives coverage results)
+  * Integration Test
