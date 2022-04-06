@@ -13,7 +13,7 @@ namespace toyrobot {
 class ReportResponse : public BaseResponse {
 
 public:
-    ReportResponse(const string& report)
+    explicit ReportResponse(const string& report)
         : BaseResponse(RequestType::kReportRequest) {
         report_ = report;
     }

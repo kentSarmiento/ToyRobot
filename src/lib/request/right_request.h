@@ -11,7 +11,7 @@ namespace toyrobot {
 class RightRequest : public BaseRequest {
 
 public:
-    RightRequest(int object_id)
+    explicit RightRequest(int object_id)
         : BaseRequest(RequestType::kRightRequest, object_id) {}
 
     BaseResponse* Execute(Table &table) override;

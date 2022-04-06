@@ -16,7 +16,7 @@ namespace toyrobot {
 class PlaceRequest : public BaseRequest {
 
 public:
-    PlaceRequest(const string& data)
+    explicit PlaceRequest(const string& data)
         : BaseRequest(RequestType::kPlaceRequest) {
         is_valid_ = false;
         ParseData(data);

@@ -13,7 +13,7 @@ public:
         value_ = kNorth;
     }
 
-    Direction(const string& d) {
+    explicit Direction(const string& d) {
         value_ = d;
     }
 

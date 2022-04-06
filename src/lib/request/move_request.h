@@ -11,7 +11,7 @@ namespace toyrobot {
 class MoveRequest : public BaseRequest {
 
 public:
-    MoveRequest(int object_id)
+    explicit MoveRequest(int object_id)
         : BaseRequest(RequestType::kMoveRequest, object_id) {}
 
     BaseResponse* Execute(Table &table) override;
