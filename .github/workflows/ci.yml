@@ -11,8 +11,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: Setup
+      run: sudo apt-get update && sudo apt install -y cppcheck
     - name: Build Source Project
-      run: cd src && make
+      run: |
+        cd src
+        make
+    - name: Static Test
+      run: |
+        cppcheck --xml . 2> output.xml
+        cppcheck-htmlreport --file=output.xml --report-dir=html/
+    - name: Archive static test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: static-test-report
+        path: html/*
 
   unit:
     runs-on: ubuntu-latest

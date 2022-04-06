@@ -114,17 +114,6 @@ Then, the tests can be executed using `make test` command.
 ```
 make test
 ```
-
-Coverage can be measured using `make coverage` command (`lcov` is needed).
-```
-make coverage
-```
-
-Memory Leak can be checked using `make leak_check` command (`valgrind` is needed).
-```
-make leak_check
-```
-
 ### Project CI
 
 The project uses Github Actions to automate build and tests
