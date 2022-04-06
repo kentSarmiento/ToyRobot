@@ -14,9 +14,8 @@ class ReportResponse : public BaseResponse {
 
 public:
     explicit ReportResponse(const string& report)
-        : BaseResponse(RequestType::kReportRequest) {
-        report_ = report;
-    }
+        : BaseResponse(RequestType::kReportRequest),
+          report_(report) {}
 
     void TakeValue(string &value) override;
 

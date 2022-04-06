@@ -14,13 +14,10 @@ public:
     }
 
     RobotObject(const Coordinates& position, const Direction& facing)
-        : BaseObject(position, kRobotType) {
-        facing_ = facing;
-    }
+        : BaseObject(position, kRobotType), facing_(facing) {}
 
-    RobotObject(const RobotObject &r) : BaseObject(r) {
-        facing_ = r.facing_;
-    }
+    RobotObject(const RobotObject &r)
+        : BaseObject(r), facing_(r.facing_) {}
 
     Coordinates GetMovePosition() override;
     void Move() override;
