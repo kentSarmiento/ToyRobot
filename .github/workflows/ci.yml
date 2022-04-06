@@ -21,6 +21,8 @@ jobs:
       run: |
         cppcheck --xml . 2> output.xml
         cppcheck-htmlreport --file=output.xml --report-dir=html/
+        PWD=`pwd` && PROJECT_NAME=`basename $PWD` && \
+          sed -i -- "s/\[project name\]/$PROJECT_NAME/g" html/index.html
     - name: Archive static test results
       uses: actions/upload-artifact@v3
       with:

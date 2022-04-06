@@ -118,6 +118,6 @@ make test
 
 The project uses Github Actions to automate build and tests
 * [ci.yml](.github/workflows/ci.yml) file used for the following workflow
-  * Build
+  * Build and Static Test (archives static test results)
   * Unit Test (archives coverage results)
   * Integration Test
