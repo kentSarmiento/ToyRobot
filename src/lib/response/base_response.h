@@ -10,7 +10,7 @@ namespace toyrobot {
 class BaseResponse {
 
 public:
-    BaseResponse(string request_name) {
+    BaseResponse(const string& request_name) {
         request_name_ = request_name;
     }
 

@@ -17,13 +17,13 @@ public:
         id_ = 0;
     }
 
-    BaseObject(Coordinates position)
+    BaseObject(const Coordinates& position)
         : position_(position),
           type_(kObjectType) {
         id_ = 0;
     }
 
-    BaseObject(Coordinates position, ObjectType type)
+    BaseObject(const Coordinates& position, const ObjectType& type)
         : position_(position),
           type_(type) {
         id_ = 0;

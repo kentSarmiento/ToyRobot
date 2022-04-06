@@ -13,7 +13,7 @@ public:
         type_ = kRobotType;
     }
 
-    RobotObject(Coordinates position, Direction facing)
+    RobotObject(const Coordinates& position, const Direction& facing)
         : BaseObject(position, kRobotType) {
         facing_ = facing;
     }

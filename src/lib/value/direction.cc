@@ -7,7 +7,7 @@ const string Direction::kEast = "EAST";
 const string Direction::kSouth = "SOUTH";
 const string Direction::kWest = "WEST";
 
-bool Direction::IsValidDirection(string d) {
+bool Direction::IsValidDirection(const string& d) {
     return (d == kNorth || d == kEast || d == kSouth || d == kWest);
 }
 
