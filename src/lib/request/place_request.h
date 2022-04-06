@@ -28,7 +28,7 @@ public:
         ParseData(data);
     }
 
-    BaseResponse* Execute(Table &table);
+    BaseResponse* Execute(Table &table) override;
 
     Coordinates position() { return position_; }
     Direction facing() { return facing_; }
