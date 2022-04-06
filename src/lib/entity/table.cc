@@ -46,8 +46,6 @@ int Table::PlaceObject(int id, BaseObject *object) {
 }
 
 void Table::MoveObject(int id) {
-    string output;
-
     BaseObject *object = GetObject(id);
     if (object && CanObjectMove(object)) {
         object->Move();
