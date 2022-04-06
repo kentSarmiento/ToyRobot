@@ -11,10 +11,10 @@ namespace toyrobot {
 class LeftRequest : public BaseRequest {
 
 public:
-    LeftRequest(int object_id)
+    explicit LeftRequest(int object_id)
         : BaseRequest(RequestType::kLeftRequest, object_id) {}
 
-    BaseResponse* Execute(Table &table);
+    BaseResponse* Execute(Table &table) override;
 };
 
 inline BaseResponse* LeftRequest::Execute(Table &table) {

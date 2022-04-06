@@ -57,8 +57,8 @@ TEST_CASE("RequestHandler: Handle Requests", "[RequestHandler]") {
         REQUIRE(response);
 
         SECTION("Handle REPORT Request") {
-            BaseRequest *request = RequestFactory::CreateRequest(RequestType::kReportRequest, 0);
-            BaseResponse *response = request_handler.HandleCommand(request);
+            request = RequestFactory::CreateRequest(RequestType::kReportRequest, 0);
+            response = request_handler.HandleCommand(request);
 
             REQUIRE(response);
             string report;
@@ -67,20 +67,20 @@ TEST_CASE("RequestHandler: Handle Requests", "[RequestHandler]") {
             REQUIRE(report == "0,0,NORTH");
         }
         SECTION("Handle LEFT Request") {
-            BaseRequest *request = RequestFactory::CreateRequest(RequestType::kLeftRequest, 0);
-            BaseResponse *response = request_handler.HandleCommand(request);
+            request = RequestFactory::CreateRequest(RequestType::kLeftRequest, 0);
+            response = request_handler.HandleCommand(request);
 
             REQUIRE(response);
         }
         SECTION("Handle RIGHT Request") {
-            BaseRequest *request = RequestFactory::CreateRequest(RequestType::kRightRequest, 0);
-            BaseResponse *response = request_handler.HandleCommand(request);
+            request = RequestFactory::CreateRequest(RequestType::kRightRequest, 0);
+            response = request_handler.HandleCommand(request);
 
             REQUIRE(response);
         }
         SECTION("Handle MOVE Request") {
-            BaseRequest *request = RequestFactory::CreateRequest(RequestType::kMoveRequest, 0);
-            BaseResponse *response = request_handler.HandleCommand(request);
+            request = RequestFactory::CreateRequest(RequestType::kMoveRequest, 0);
+            response = request_handler.HandleCommand(request);
 
             REQUIRE(response);
         }

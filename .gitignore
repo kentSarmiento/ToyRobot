@@ -9,11 +9,14 @@ html/
 coverage.info
 *.gc*
 
+# Memory leak test output files
+valgrind.txt
+
+# Static test output file
+cppcheck.xml
+
 # Application output
 main
 
 # Object files
 *.o
-
-# Memory leak test output files
-valgrind.txt

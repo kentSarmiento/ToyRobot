@@ -3,7 +3,9 @@
 
 namespace toyrobot {
 
-BaseObject* ObjectFactory::CreateObject(ObjectType object_type, Coordinates position, Direction facing)
+BaseObject* ObjectFactory::CreateObject(const ObjectType& object_type,
+                                        const Coordinates& position,
+                                        const Direction& facing)
 {
     BaseObject* object = nullptr;
     if (object_type == ObjectType::kRobotType) {

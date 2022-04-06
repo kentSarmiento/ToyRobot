@@ -17,22 +17,19 @@ public:
         id_ = 0;
     }
 
-    BaseObject(Coordinates position)
-        : position_(position),
-          type_(kObjectType) {
+    BaseObject(const Coordinates& position)
+        : position_(position), type_(kObjectType) {
         id_ = 0;
     }
 
-    BaseObject(Coordinates position, ObjectType type)
-        : position_(position),
-          type_(type) {
+    BaseObject(const Coordinates& position, const ObjectType& type)
+        : position_(position), type_(type) {
         id_ = 0;
     }
 
-    BaseObject(const BaseObject &o) {
+    BaseObject(const BaseObject &o)
+        : position_(o.position_), type_(o.type_) {
         id_ = o.id_;
-        position_ = o.position_;
-        type_ = o.type_;
     }
 
     virtual ~BaseObject() = default;

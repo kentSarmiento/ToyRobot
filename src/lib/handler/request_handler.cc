@@ -11,7 +11,8 @@ RequestHandler::~RequestHandler() {
     }
 }
 
-BaseRequest* RequestHandler::CreateRequest(string request_name, int object_id, string data) {
+BaseRequest* RequestHandler::CreateRequest(const string& request_name,
+                                           int object_id, string data) {
     BaseRequest *request;
 
     if (request_name == RequestType::kPlaceRequest) {

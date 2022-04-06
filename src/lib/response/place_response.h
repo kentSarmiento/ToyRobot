@@ -13,7 +13,7 @@ namespace toyrobot {
 class PlaceResponse : public BaseResponse {
 
 public:
-    PlaceResponse(int object_id)
+    explicit PlaceResponse(int object_id)
         : BaseResponse(RequestType::kPlaceRequest) {
         object_id_ = object_id;
     }

@@ -11,7 +11,7 @@ Table::~Table() {
     objects_.clear();
 }
 
-bool Table::IsCoordinatesAvailable(Coordinates position) {
+bool Table::IsCoordinatesAvailable(const Coordinates& position) {
     return IsCoordinatesValid(position) && IsCoordinatesFree(position);
 }
 
@@ -25,7 +25,7 @@ int Table::PlaceObject(BaseObject *object) {
     return id;
 }
 
-bool Table::IsCoordinatesAvailable(int id, Coordinates position) {
+bool Table::IsCoordinatesAvailable(int id, const Coordinates& position) {
     return IsCoordinatesValid(position) && IsCoordinatesFree(id, position);
 }
 
@@ -46,8 +46,6 @@ int Table::PlaceObject(int id, BaseObject *object) {
 }
 
 void Table::MoveObject(int id) {
-    string output;
-
     BaseObject *object = GetObject(id);
     if (object && CanObjectMove(object)) {
         object->Move();
@@ -88,7 +86,7 @@ BaseObject *Table::GetObject(int id) {
     return nullptr;
 }
 
-bool Table::IsCoordinatesValid(Coordinates position) {
+bool Table::IsCoordinatesValid(const Coordinates& position) {
     if (position.x < 0 || position.x >= table_size_ ||
         position.y < 0 || position.y >= table_size_) {
         return false;
@@ -96,7 +94,7 @@ bool Table::IsCoordinatesValid(Coordinates position) {
     return true;
 }
 
-bool Table::IsCoordinatesFree(Coordinates position) {
+bool Table::IsCoordinatesFree(const Coordinates& position) {
     for (auto it = objects_.begin(); it != objects_.end(); it++)
         if (it->second->position() == position)
             return false;
@@ -104,7 +102,7 @@ bool Table::IsCoordinatesFree(Coordinates position) {
     return true;
 }
 
-bool Table::IsCoordinatesFree(int id, Coordinates position) {
+bool Table::IsCoordinatesFree(int id, const Coordinates& position) {
     for (auto it = objects_.begin(); it != objects_.end(); it++) {
         if (it->second->position() == position && it->second == objects_[id])
             return true;

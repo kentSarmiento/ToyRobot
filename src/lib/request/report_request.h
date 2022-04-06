@@ -12,10 +12,10 @@ namespace toyrobot {
 class ReportRequest : public BaseRequest {
 
 public:
-    ReportRequest(int object_id)
+    explicit ReportRequest(int object_id)
         : BaseRequest(RequestType::kReportRequest, object_id) {}
 
-    BaseResponse* Execute(Table &table);
+    BaseResponse* Execute(Table &table) override;
 };
 
 inline BaseResponse* ReportRequest::Execute(Table &table) {

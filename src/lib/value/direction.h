@@ -13,11 +13,9 @@ public:
         value_ = kNorth;
     }
 
-    Direction(string d) {
-        value_ = d;
-    }
+    explicit Direction(const string& d) : value_(d) {}
 
-    static bool IsValidDirection(string d);
+    static bool IsValidDirection(const string& d);
 
     void TurnLeft();
     void TurnRight();

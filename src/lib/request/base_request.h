@@ -14,16 +14,17 @@ namespace toyrobot {
 class BaseRequest {
 
 public:
-    BaseRequest(string request_name) {
-        request_name_ = request_name;
-        object_type_ = ObjectType::kRobotType;
+    BaseRequest(const string& request_name)
+        : request_name_(request_name),
+          object_type_(ObjectType::kRobotType) {
+        object_id_ = -1;
         is_valid_ = true;
         is_initial_request_ = true;
     }
 
-    BaseRequest(string request_name, int object_id) {
-        request_name_ = request_name;
-        object_type_ = ObjectType::kRobotType;
+    BaseRequest(const string& request_name, int object_id)
+        : request_name_(request_name),
+          object_type_(ObjectType::kRobotType) {
         object_id_ = object_id;
         is_valid_ = true;
         is_initial_request_ = false;

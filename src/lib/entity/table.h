@@ -19,10 +19,10 @@ public:
 
     ~Table();
 
-    bool IsCoordinatesAvailable(Coordinates position);
+    bool IsCoordinatesAvailable(const Coordinates& position);
     int PlaceObject(BaseObject *object);
 
-    bool IsCoordinatesAvailable(int id, Coordinates position);
+    bool IsCoordinatesAvailable(int id, const Coordinates& position);
     int PlaceObject(int id, BaseObject *object);
 
     void MoveObject(int id);
@@ -39,10 +39,10 @@ private:
 
     BaseObject *GetObject(int id);
 
-    bool IsCoordinatesValid(Coordinates position);
+    bool IsCoordinatesValid(const Coordinates& position);
 
-    bool IsCoordinatesFree(Coordinates position);
-    bool IsCoordinatesFree(int id, Coordinates position);
+    bool IsCoordinatesFree(const Coordinates& position);
+    bool IsCoordinatesFree(int id, const Coordinates& position);
 
     bool CanObjectMove(BaseObject* object);
 };

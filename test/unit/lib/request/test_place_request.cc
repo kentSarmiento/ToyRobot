@@ -33,7 +33,7 @@ TEST_CASE("PlaceRequest: Valid requests", "[PlaceRequest]") {
         PlaceRequest request("0,4,EAST");
 
         REQUIRE(request.request_name() == RequestType::kPlaceRequest);
-        REQUIRE(request.object_id() == 0);
+        REQUIRE(request.object_id() == -1);
         REQUIRE(request.is_valid());
         REQUIRE(request.position() == Coordinates(0,4));
         REQUIRE(request.facing().IsEast());
@@ -42,7 +42,7 @@ TEST_CASE("PlaceRequest: Valid requests", "[PlaceRequest]") {
         PlaceRequest request("4,4,SOUTH");
 
         REQUIRE(request.request_name() == RequestType::kPlaceRequest);
-        REQUIRE(request.object_id() == 0);
+        REQUIRE(request.object_id() == -1);
         REQUIRE(request.is_valid());
         REQUIRE(request.position() == Coordinates(4,4));
         REQUIRE(request.facing().IsSouth());
@@ -51,7 +51,7 @@ TEST_CASE("PlaceRequest: Valid requests", "[PlaceRequest]") {
         PlaceRequest request("4,0,WEST");
 
         REQUIRE(request.request_name() == RequestType::kPlaceRequest);
-        REQUIRE(request.object_id() == 0);
+        REQUIRE(request.object_id() == -1);
         REQUIRE(request.is_valid());
         REQUIRE(request.position() == Coordinates(4,0));
         REQUIRE(request.facing().IsWest());

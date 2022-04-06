@@ -114,21 +114,10 @@ Then, the tests can be executed using `make test` command.
 ```
 make test
 ```
-
-Coverage can be measured using `make coverage` command (`lcov` is needed).
-```
-make coverage
-```
-
-Memory Leak can be checked using `make leak_check` command (`valgrind` is needed).
-```
-make leak_check
-```
-
 ### Project CI
 
 The project uses Github Actions to automate build and tests
 * [ci.yml](.github/workflows/ci.yml) file used for the following workflow
-  * Build
+  * Build and Static Test (archives static test results)
   * Unit Test (archives coverage results)
   * Integration Test

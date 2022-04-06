@@ -11,7 +11,7 @@ class TestBaseObject : public BaseObject {
 public:
     TestBaseObject(): BaseObject() {}
 
-    TestBaseObject(Coordinates position)
+    explicit TestBaseObject(Coordinates position)
         : BaseObject(position) {}
 
     TestBaseObject(Coordinates position, ObjectType type)
@@ -20,13 +20,13 @@ public:
     TestBaseObject(const TestBaseObject &o)
         : BaseObject(o) {}
 
-    Coordinates GetMovePosition() { return Coordinates(); }
-    void Move() {}
+    Coordinates GetMovePosition() override { return Coordinates(); }
+    void Move() override {}
 
-    void TurnLeft() {}
-    void TurnRight() {}
+    void TurnLeft() override {}
+    void TurnRight() override {}
 
-    string Report() { return {}; }
+    string Report() override { return {}; }
 
     int id() { return id_; }
     int x_position() { return position().x; }

@@ -12,9 +12,10 @@ namespace toyrobot {
 class RequestFactory {
 
 public:
-    static BaseRequest* CreateRequest(string request_name, string data);
-    static BaseRequest* CreateRequest(string request_name, int object_id, string data);
-    static BaseRequest* CreateRequest(string request_name, int object_id);
+    static BaseRequest* CreateRequest(const string& request_name, const string& data);
+    static BaseRequest* CreateRequest(const string& request_name,
+                                      int object_id, const string& data);
+    static BaseRequest* CreateRequest(const string& request_name, int object_id);
 };
 
 } // namespace toyrobot

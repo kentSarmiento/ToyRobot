@@ -11,7 +11,9 @@ namespace toyrobot {
 class ObjectFactory {
 
 public:
-    static BaseObject* CreateObject(ObjectType object_type, Coordinates position, Direction facing);
+    static BaseObject* CreateObject(const ObjectType& object_type,
+                                    const Coordinates& position,
+                                    const Direction& facing);
 };
 
 } // namespace toyrobot
