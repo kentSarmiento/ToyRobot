@@ -73,5 +73,5 @@ make leak_check
 * Number of test cases: 37
 * Number of assertions: 566
 * Coverage:
-  * Lines: 100% (308 of 308 lines)
+  * Lines: 100% (298 of 298 lines)
   * Functions: 97.8% (87 of 89 lines)
