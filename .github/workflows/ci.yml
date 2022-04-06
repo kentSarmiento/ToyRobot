@@ -19,7 +19,7 @@ jobs:
         make
     - name: Static Test
       run: |
-        cppcheck --xml --enable=all --suppress=missingInclude ./src/ 2> cppcheck.xml
+        cppcheck --xml --enable=all --suppress=missingInclude ./src/ 2> output.xml
         cppcheck-htmlreport --file=output.xml --report-dir=html/
         PWD=`pwd` && PROJECT_NAME=`basename $PWD` && \
           sed -i -- "s/\[project name\]/$PROJECT_NAME/g" html/*
