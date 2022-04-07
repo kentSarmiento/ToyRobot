@@ -12,7 +12,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Setup
-      run: sudo apt-get update && sudo apt install -y cppcheck
+      run: |
+        sudo apt-get update
+        sudo apt install -y cppcheck
     - name: Build Source Project
       run: |
         cd src
@@ -34,15 +36,18 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Setup
-      run: sudo apt-get update && sudo apt install -y lcov
+      run: |
+        sudo apt-get update
+        sudo apt install -y lcov valgrind
     - name: Build Unit Test
       run: |
         cd test/unit
         make
-    - name: Execute Tests
+    - name: Execute Tests (with memleak detection)
       run: |
         cd test/unit
-        make test
+        make leak_check
+        cat valgrind.txt
     - name: Coverage
       run: |
         cd test/unit
@@ -57,11 +62,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: Setup
+      run: |
+        sudo apt-get update
+        sudo apt install -y valgrind
     - name: Build Integration Test
       run: |
         cd test/integration
         make
-    - name: Execute Tests
+    - name: Execute Tests (with memleak detection)
       run: |
         cd test/integration
-        make test
+        make leak_check
+        cat valgrind.txt
