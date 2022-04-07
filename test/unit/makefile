@@ -79,7 +79,7 @@ test_main.o: $(UNITTESTDIR)/test_main.cc
 	$(CXX) $(CXXFLAGS) $(INCS) -c $(UNITTESTDIR)/test_main.cc
 
 clean:
-	rm -f $(OUT) $(APP) $(LIBRARY) $(TESTS)
+	rm -f $(OUT) $(LIBRARY) $(TESTS)
 
 all_clean:
 	rm -f $(OUT) *.o *.gc* *.info
