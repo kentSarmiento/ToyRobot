@@ -5,10 +5,8 @@ using namespace std;
 namespace toyrobot {
 
 Table::~Table() {
-    for (auto it = objects_.begin(); it != objects_.end(); it++) {
-        delete it->second;
-    }
-    objects_.clear();
+    for (auto object : objects_)
+        delete object;
 }
 
 bool Table::IsCoordinatesAvailable(const Coordinates& position) {
@@ -19,7 +17,7 @@ int Table::PlaceObject(BaseObject *object) {
     int id = -1;
     if (object) {
         id = objects_.size();
-        objects_[id] = object;
+        objects_.push_back(object);
     }
 
     return id;
@@ -33,13 +31,13 @@ int Table::PlaceObject(int id, BaseObject *object) {
     if (!object) {
         id = -1;
     } else {
-        if (objects_.find(id) != objects_.end()) {
+        if (id >= 0 && static_cast<size_t>(id) < objects_.size()) {
             delete objects_[id];
+            objects_[id] = object;
         } else {
             id = objects_.size();
+            objects_.push_back(object);
         }
-
-        objects_[id] = object;
     }
 
     return id;
@@ -78,9 +76,8 @@ string Table::ReportObject(int id) {
 }
 
 BaseObject *Table::GetObject(int id) {
-    auto it = objects_.find(id);
-    if (it != objects_.end()) {
-        return it->second;
+    if (id >= 0 && static_cast<size_t>(id) < objects_.size()) {
+        return objects_[id];
     }
 
     return nullptr;
@@ -95,18 +92,19 @@ bool Table::IsCoordinatesValid(const Coordinates& position) {
 }
 
 bool Table::IsCoordinatesFree(const Coordinates& position) {
-    for (auto it = objects_.begin(); it != objects_.end(); it++)
-        if (it->second->position() == position)
+    for (auto object : objects_)
+        if (object->position() == position)
             return false;
 
     return true;
 }
 
 bool Table::IsCoordinatesFree(int id, const Coordinates& position) {
-    for (auto it = objects_.begin(); it != objects_.end(); it++) {
-        if (it->second->position() == position && it->second == objects_[id])
+    int i=0;
+    for (auto it = objects_.begin(); it != objects_.end(); it++, i++) {
+        if ((*it)->position() == position && id == i)
             return true;
-        if (it->second->position() == position)
+        if ((*it)->position() == position)
             return false;
     }
 

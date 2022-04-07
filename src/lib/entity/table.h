@@ -1,7 +1,7 @@
 #ifndef ENTITY_TABLE_H_
 #define ENTITY_TABLE_H_
 
-#include <map>
+#include <vector>
 
 #include "base_object.h"
 #include "robot_object.h"
@@ -31,7 +31,7 @@ public:
     string ReportObject(int id);
 
 protected:
-    map <int, BaseObject *> objects_;
+    vector<BaseObject *> objects_;
 
 private:
     static const int kDefinedTableSize = 5;
